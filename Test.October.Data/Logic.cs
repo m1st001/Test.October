@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Test.October.DataAccess;
 
 namespace Test.October.Data
@@ -30,11 +25,11 @@ namespace Test.October.Data
                 {
                     command.Parameters.AddWithValue("@OrderId", orderId);
 
-                    result = command.ExecuteScalar()?.ToString();
+                    result = command.ExecuteScalar()?.ToString()!;
                 }
             }
 
-            return result;
+            return result!;
         }
 
         public DataTable GetItemQuantitiesBySite(long assemblySiteId)
@@ -59,7 +54,7 @@ namespace Test.October.Data
 
             return resultTable;
         }
-        public DataTable GetAvailableLeftovers(long assemblySiteId)
+        public DataTable GetAvailableStocks(long assemblySiteId)
         {
             
             DataTable leftoversTable = new DataTable();  // Таблица для хранения результатов
@@ -104,6 +99,51 @@ namespace Test.October.Data
             }
 
             return tasksTable;
+        }
+
+        public DataTable CheckActiveAssembly()
+        {
+            DataTable activeAssemblyTable = new DataTable();
+
+            using(SqlConnection connection = new SqlConnection(_connect.ConnectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM dbo.GetActiveAssemblySites()";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(activeAssemblyTable);
+                    }
+                }
+            }
+
+            return activeAssemblyTable;
+        }
+
+        public DataTable GetAvailableInventory()
+        {
+            DataTable activeAssemblyTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(_connect.ConnectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM dbo.GetAvailableInventory()" +
+                                "ORDER BY SiteName, ItemType;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(activeAssemblyTable);
+                    }
+                }
+            }
+
+            return activeAssemblyTable;
         }
     }
 }

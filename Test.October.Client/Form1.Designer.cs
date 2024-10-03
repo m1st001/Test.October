@@ -37,21 +37,27 @@
             dataGridView2 = new DataGridView();
             dataGridView3 = new DataGridView();
             GetItemQuantitiesBySite = new DomainUpDown();
+            btnCheckActiveSites = new Button();
+            checkActiveAsembly = new DataGridView();
+            dataGridView4 = new DataGridView();
+            btnGetAvailableInventory = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)checkActiveAsembly).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             SuspendLayout();
             // 
             // textForOrderId
             // 
-            textForOrderId.Location = new Point(124, 403);
+            textForOrderId.Location = new Point(400, 415);
             textForOrderId.Name = "textForOrderId";
             textForOrderId.Size = new Size(191, 23);
             textForOrderId.TabIndex = 6;
             // 
             // btnCheckFeasibility
             // 
-            btnCheckFeasibility.Location = new Point(321, 349);
+            btnCheckFeasibility.Location = new Point(597, 361);
             btnCheckFeasibility.Name = "btnCheckFeasibility";
             btnCheckFeasibility.Size = new Size(191, 77);
             btnCheckFeasibility.TabIndex = 8;
@@ -62,7 +68,7 @@
             // OrderId
             // 
             OrderId.BackColor = SystemColors.Control;
-            OrderId.Location = new Point(12, 403);
+            OrderId.Location = new Point(400, 389);
             OrderId.Name = "OrderId";
             OrderId.Size = new Size(106, 23);
             OrderId.TabIndex = 9;
@@ -70,9 +76,9 @@
             // 
             // GetAssemblyTasks
             // 
-            GetAssemblyTasks.Location = new Point(547, 27);
+            GetAssemblyTasks.Location = new Point(547, 3);
             GetAssemblyTasks.Name = "GetAssemblyTasks";
-            GetAssemblyTasks.Size = new Size(240, 77);
+            GetAssemblyTasks.Size = new Size(241, 37);
             GetAssemblyTasks.TabIndex = 10;
             GetAssemblyTasks.Text = "Получить доступные запасы";
             GetAssemblyTasks.UseVisualStyleBackColor = true;
@@ -81,7 +87,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(249, 110);
+            dataGridView1.Location = new Point(249, 41);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(293, 150);
             dataGridView1.TabIndex = 11;
@@ -108,7 +114,7 @@
             GetAvailableStocks.Items.Add("18");
             GetAvailableStocks.Items.Add("19");
             GetAvailableStocks.Items.Add("20");
-            GetAvailableStocks.Location = new Point(3, 81);
+            GetAvailableStocks.Location = new Point(3, 12);
             GetAvailableStocks.Name = "GetAvailableStocks";
             GetAvailableStocks.Size = new Size(240, 23);
             GetAvailableStocks.TabIndex = 13;
@@ -118,7 +124,7 @@
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(3, 110);
+            dataGridView2.Location = new Point(3, 41);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(240, 150);
             dataGridView2.TabIndex = 14;
@@ -126,7 +132,7 @@
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(548, 110);
+            dataGridView3.Location = new Point(548, 41);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(240, 150);
             dataGridView3.TabIndex = 15;
@@ -153,18 +159,58 @@
             GetItemQuantitiesBySite.Items.Add("18");
             GetItemQuantitiesBySite.Items.Add("19");
             GetItemQuantitiesBySite.Items.Add("20");
-            GetItemQuantitiesBySite.Location = new Point(249, 81);
+            GetItemQuantitiesBySite.Location = new Point(249, 12);
             GetItemQuantitiesBySite.Name = "GetItemQuantitiesBySite";
             GetItemQuantitiesBySite.Size = new Size(292, 23);
             GetItemQuantitiesBySite.TabIndex = 12;
             GetItemQuantitiesBySite.Text = "id соборчной площадки для получения остаков";
             GetItemQuantitiesBySite.SelectedItemChanged += GetItemQuantitiesBySite_SelectedItemChanged;
             // 
+            // btnCheckActiveSites
+            // 
+            btnCheckActiveSites.Location = new Point(12, 349);
+            btnCheckActiveSites.Name = "btnCheckActiveSites";
+            btnCheckActiveSites.Size = new Size(147, 57);
+            btnCheckActiveSites.TabIndex = 16;
+            btnCheckActiveSites.Text = "Узнать активные заказы и их площадки";
+            btnCheckActiveSites.UseVisualStyleBackColor = true;
+            btnCheckActiveSites.Click += btnCheckActiveSites_Click;
+            // 
+            // checkActiveAsembly
+            // 
+            checkActiveAsembly.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            checkActiveAsembly.Location = new Point(12, 221);
+            checkActiveAsembly.Name = "checkActiveAsembly";
+            checkActiveAsembly.Size = new Size(161, 119);
+            checkActiveAsembly.TabIndex = 17;
+            // 
+            // dataGridView4
+            // 
+            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView4.Location = new Point(205, 221);
+            dataGridView4.Name = "dataGridView4";
+            dataGridView4.Size = new Size(174, 119);
+            dataGridView4.TabIndex = 18;
+            // 
+            // btnGetAvailableInventory
+            // 
+            btnGetAvailableInventory.Location = new Point(205, 349);
+            btnGetAvailableInventory.Name = "btnGetAvailableInventory";
+            btnGetAvailableInventory.Size = new Size(174, 57);
+            btnGetAvailableInventory.TabIndex = 19;
+            btnGetAvailableInventory.Text = "Узнать, с каких площадок и в каком количестве можно забрать готовый заказ";
+            btnGetAvailableInventory.UseVisualStyleBackColor = true;
+            btnGetAvailableInventory.Click += btnGetAvailableInventory_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnGetAvailableInventory);
+            Controls.Add(dataGridView4);
+            Controls.Add(checkActiveAsembly);
+            Controls.Add(btnCheckActiveSites);
             Controls.Add(dataGridView3);
             Controls.Add(dataGridView2);
             Controls.Add(GetAvailableStocks);
@@ -180,6 +226,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)checkActiveAsembly).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -200,5 +248,9 @@
         private DataGridView dataGridView2;
         private DataGridView dataGridView3;
         private DomainUpDown GetItemQuantitiesBySite;
+        private Button btnCheckActiveSites;
+        private DataGridView checkActiveAsembly;
+        private DataGridView dataGridView4;
+        private Button btnGetAvailableInventory;
     }
 }
