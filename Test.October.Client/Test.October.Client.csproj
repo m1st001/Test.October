@@ -14,6 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Test.October.DataAccess\Test.October.DataAccess.csproj" />
+    <ProjectReference Include="..\Test.October.Data\Test.October.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
