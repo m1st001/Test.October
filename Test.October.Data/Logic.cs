@@ -54,30 +54,6 @@ namespace Test.October.Data
 
             return resultTable;
         }
-        public DataTable GetAvailableStocks(long assemblySiteId)
-        {
-            
-            DataTable leftoversTable = new DataTable();  // Таблица для хранения результатов
-
-            using (SqlConnection connection = new SqlConnection(_connect.ConnectionString))
-            {
-                connection.Open();  // Открываем подключение к базе данных
-
-                // Запрос для получения остатков номенклатуры
-                string query = "SELECT * FROM dbo.GetAvailableStock(@AssemblySiteId)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@AssemblySiteId", assemblySiteId);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        adapter.Fill(leftoversTable);  // Заполняем DataTable результатами
-                    }
-                }
-            }
-
-            return leftoversTable;
-        }
         public DataTable GetAssemblyTasks()
         {
             DataTable tasksTable = new DataTable();  // Таблица для хранения результатов
@@ -131,8 +107,7 @@ namespace Test.October.Data
             {
                 connection.Open();
 
-                string query = "SELECT * FROM dbo.GetAvailableInventory()" +
-                                "ORDER BY SiteName, ItemType;";
+                string query = "SELECT * FROM dbo.GetAvailableInventory()";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
