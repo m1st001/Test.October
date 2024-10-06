@@ -23,7 +23,7 @@ namespace Test.October.Client
             int orderId;
             if (!int.TryParse(textForOrderId.Text, out orderId))
             {
-                MessageBox.Show("Введите числа, а не строку");
+                MessageBox.Show("Введите число, а не строку");
             }
             else
             {
@@ -38,6 +38,9 @@ namespace Test.October.Client
                                                                                                          // элементов по каждому типу номенклатуры на каждой сборочной площадке
             dataGridView1.DataSource = result;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Columns[0].HeaderText = "Тип номенклатуры";
+            dataGridView1.Columns[1].HeaderText = "Общее количество номенклатуры";
+            dataGridView1.Columns[2].HeaderText = "Название площадки";
         }
 
         private void GetAssemblyTasks_Click(object sender, EventArgs e) 
